@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>电力费用优化平台</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/opt.css">
+    <link rel="stylesheet" href="css/sub.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        .t_title{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 2.5em;
+            line-height: 80px;
+            color: #fff;
+        }
+        #chart_map{
+            cursor: pointer;
+        }
+        .t_show{
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 2px;
+            background: #2C58A6;
+            padding: 2px 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!--header-->
+<div class="header">
+    <div class="bg_header">
+        <div class="header_nav fl t_title">
+            电力费用优化平台
+        </div> 
+    </div>
+</div>
+
+<!--main-->
+<div class="data_content">
+  <!--   <div class="data_time">
+        温馨提示: 点击模块后跳转至详情页面。        
+    </div> -->
+
+    <div class="data_main">
+        <div class="main_left fl">
+            <div class="left_1 t_btn6" style="cursor: pointer; height: 450px;">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i> 
+                    <i class="l_t_line"></i> 
+                </div> 
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i> 
+                    <i class="r_t_line"></i> 
+                </div> 
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i> 
+                    <i class="b_l_line"></i> 
+                </div> 
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                    <i class="r_b_line"></i> 
+                    <i class="b_r_line"></i> 
+                </div> 
+                <div class="main_title">
+                  三部分费用占比情况
+                </div>
+                <div id="chart_1" class="chart" style="margin-left: 5%;width:90%;height: 400px; margin-top: 25px;"></div>
+            </div>
+            <div class="left_2" style="cursor: pointer;width: 100%;height: 480px">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i> 
+                    <i class="l_t_line"></i> 
+                </div> 
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i> 
+                    <i class="r_t_line"></i> 
+                </div> 
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i> 
+                    <i class="b_l_line"></i> 
+                </div> 
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                    <i class="r_b_line"></i> 
+                    <i class="b_r_line"></i> 
+                </div> 
+                <div class="main_title">
+                    实际功率因数达标情况
+                </div>
+                <div id="chart2"   style="margin-left: 5%;width:90%;height: 400px; margin-top: 50px;"></div>
+                <div class="">
+                    <div id="chart_2" class="left-y chart t_btn9" style="width:49%;height: 220px;display: inline;float: left;"></div>
+                    <div id="chart_22" class="right-y chart t_btn9" style="width:49%;height: 220px;display: inline;float: left;"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="wlsj-down">
+                    <div id="chart_3" class="echart t_btn7" style="width:100%;height: 230px;z-index: 9999;"></div>
+                </div>
+                <div class="wlsj-down2">
+                    <div id="chart_33" class="echart t_btn7" style="width:100%;height: 197px;z-index: 9999;margin-bottom: 10px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="main_center fl">
+            <div class="center_text">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i> 
+                    <i class="l_t_line"></i> 
+                </div> 
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i> 
+                    <i class="r_t_line"></i> 
+                </div> 
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i> 
+                    <i class="b_l_line"></i> 
+                </div> 
+                 <!--右下边框-->
+                 <div class="t_line_box">
+                    <i class="r_b_line"></i> 
+                    <i class="b_r_line"></i> 
+                </div> 
+                <div class="main_title" style="text-align: center;">
+                    基础户号信息及电费明细
+                </div>
+                <!-- <div id="chart_map" style="width:100%;height:610px;"></div> -->
+                <div class="bottom_center fl">
+                    <div class="main_table t_btn8" style="width: 100%;margin-top: 20px;border-bottom: 1px solid #3d5569;">
+                        <table class="centertable">
+                            <thead >
+                            <tr >
+                                <th class="centerdata-th" colspan="1">年度</th>
+                                <th class="centerdata-th" colspan="1">户号</th>
+                                <th class="centerdata-th" colspan="1">名称</th> 
+                                <th class="centerdata-th" colspan="1">类型</th> 
+                                <th class="centerdata-th" colspan="1">片区</th> 
+                                <th class="centerdata-th" colspan="1">用电分类</th> 
+                                
+                               <!--  <th class="centerdata-th" colspan="2">WLAN</th>
+                                <th class="centerdata-th" colspan="2">NB-LOT</th>
+                                <th class="centerdata-th" colspan="2">LORA</th> -->
+                                <!-- <th class="centerdata-th" colspan="2">三维通信物联网</th> -->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="centertable-td" style="background-color: #072951;box-shadow:-10px 0px 15px #2C58A6 inset,/*左边阴影*/10px 0px 15px #2C58A6 inset;  /*右边阴影*/">
+                                <td>2023</td>                                
+                                <td>020101000759</td>                                
+                                <td>东海路</td>                                
+                                <td>雨水</td>                                
+                                <td>东区</td>                               
+                                <td>大工业</td>                                
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="main_table t_btn8" style="width: 100%;margin-top: 10px;border-bottom: 1px solid #3d5569;">
+                        <table class="centertable">
+                            <thead >
+                            <tr >
+                                <th class="centerdata-th" colspan="1">计价方式</th> 
+                                <th class="centerdata-th" colspan="1">电压等级</th> 
+                                <th class="centerdata-th" colspan="1">分时情况</th> 
+                                <th class="centerdata-th" colspan="1">变压器容量</th> 
+                                <th class="centerdata-th" colspan="1">力调标准</th> 
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="centertable-td" style="background-color: #072951;box-shadow:-10px 0px 15px #2C58A6 inset,/*左边阴影*/10px 0px 15px #2C58A6 inset;  /*右边阴影*/">
+                                    <td>两部制</td>                                
+                                    <td>35</td>                                
+                                    <td>分时</td>                                
+                                    <td>3150</td>                                
+                                    <td>0.9</td>                                 
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="table-container" style="margin-top: 180px">
+                    <table id="zoomTable">
+                      <thead>
+                        <tr id="table-header">
+                            <th class="centerdata-elec-th">序号</th>
+                            <th class="centerdata-elec-th">年月</th>
+                            <th class="centerdata-elec-th">户号</th>
+                            <th class="centerdata-elec-th">基本电费</th>
+                            <th class="centerdata-elec-th">占比</th>
+                            <th class="centerdata-elec-th">电度电费</th>
+                            <th class="centerdata-elec-th">占比</th>
+                            <th class="centerdata-elec-th">力调电费</th>
+                            <th class="centerdata-elec-th">占比</th>
+                            <th class="centerdata-elec-th">实际功率因数</th>
+                            <th class="centerdata-elec-th">调整系数</th>
+                            <th class="centerdata-elec-th">月总电费</th>
+                            <th class="centerdata-elec-th">最大需量</th>
+                            <th class="centerdata-elec-th">占容量比</th>
+                            <th class="centerdata-elec-th">运行时长-雨</th>
+                            <th class="centerdata-elec-th">运行时长-污</th>
+                            <th class="centerdata-elec-th">总电量</th>
+                            <th class="centerdata-elec-th">电量\容量</th>
+                        </tr> <!-- Dynamically generated columns -->
+                      </thead>
+                      <tbody id="table-body">
+                        <!-- Dynamically generated rows -->
+                      </tbody>
+                    </table>
+                  </div>
+                
+                <div class="">
+                    <div id="chart_24" class="left-y chart t_btn9" style="width:35%;height: 160px;display: inline;float: left;margin-bottom: 2px;"></div>
+                    <div id="chart_15" class="right-y chart t_btn9" style="width:65%;height: 160px;display: inline;float: left;margin-bottom: 2px;"></div>
+                    <div class="clear"></div>
+                </div> 
+                <!-- <div id="chart_91" class="left-y chart t_btn9" style="width:50%;height: 160px;display: inline;float: left;margin-bottom: 2px;"></div> 
+                <div id="chart_92" class="left-y chart t_btn9" style="width:50%;height: 160px;display: inline;float: left;margin-bottom: 2px;"></div>    -->
+                
+
+            </div>
+        </div>
+        <div class="main_right fr">
+            
+            <div class="right_2" style="margin-bottom: 30px;height: 450px;">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i> 
+                    <i class="l_t_line"></i> 
+                </div> 
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i> 
+                    <i class="r_t_line"></i> 
+                </div> 
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i> 
+                    <i class="b_l_line"></i> 
+                </div> 
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                    <i class="r_b_line"></i> 
+                    <i class="b_r_line"></i> 
+                </div> 
+                <div class="main_title">
+                    雨水泵和污水泵运行时长情况
+                </div>
+                <div id="chart3" style=" margin-left: 5%;width:90%;height: 400px; margin-top: 25px;"></div>
+            </div>
+
+            <div class="right_2" style="height:480px;">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i> 
+                    <i class="l_t_line"></i> 
+                </div> 
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i> 
+                    <i class="r_t_line"></i> 
+                </div> 
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i> 
+                    <i class="b_l_line"></i> 
+                </div> 
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                    <i class="r_b_line"></i> 
+                    <i class="b_r_line"></i> 
+                </div> 
+                <div class="main_title">
+                    优化方案
+                </div>
+                <div class="opt_frame">
+                    <div class="animation-container">
+                        <div style="height: 20%;"></div>
+                        <div id = "spinner1" class="spinner"></div>
+                        <div id = "checkmark1" class="checkmark" style="display: none;">✔️</div>
+                        <p id="status1" class="status">优化中</p>
+                    </div>
+                    <button class="rounded-button"  id="optimizeBtn1">基本电费的优化</button>
+                </div> 
+                <div class="opt_frame">
+                    <div class="animation-container">
+                        <div style="height: 20%;"></div>
+                        <div id = "spinner2" class="spinner"></div>
+                        <div id = "checkmark2" class="checkmark" style="display: none;">✔️</div>
+                        <p id="status2" class="status">优化中</p>
+                    </div>
+                    <button class="rounded-button" id="optimizeBtn2">电度电费的优化</button>
+                </div> 
+                <div class="opt_frame">
+                    <div class="animation-container">
+                        <div style="height: 20%;"></div>
+                        <div id = "spinner3" class="spinner"></div>
+                        <div id = "checkmark3" class="checkmark" style="display: none;">✔️</div>
+                        <p id="status3" class="status">优化中</p>
+                    </div>
+                    <button class="rounded-button" id="optimizeBtn3">力调电费的优化</button>
+                </div> 
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!-- 优化1子页面 -->
+<div id="popup1" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+        <span id="closePopup1" class="close-popup">&times;</span>
+        <h3 style="height: 10%; font-size: 20px; font-weight: 600;">基本电费优化</h3>
+        <div class="container-fluid vh-100 d-flex p-0">
+            <div class="row flex-fill">
+                
+              <!-- 左侧列：宽度 60% -->
+              <div class="col-7 d-flex flex-column gap-3 p-3">
+                <div class="box flex-fill gap-5">
+                    <h3 style="margin-top: 10px;height: 10%; font-size: 20px; font-weight: 600;">优化计价方式</h3>
+                    <table class="centertable-sub">
+                        <thead >
+                        <tr >
+                            <th class="centerdata-th-sub" colspan="1">变压器容量</th> 
+                            <th class="centerdata-th-sub" colspan="1">理论应执行</th> 
+                            <th class="centerdata-th-sub" colspan="1">实际执行</th> 
+                            <th class="centerdata-th-sub" colspan="1">最优方案</th> 
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="centertable-td" style="background-color: #072951;box-shadow:-10px 0px 15px #2C58A6 inset,/*左边阴影*/10px 0px 15px #2C58A6 inset;  /*右边阴影*/">
+                                <td>3150</td>                                
+                                <td>两部制</td>                                 
+                                <td>两部制</td>                                
+                                <td>两部制</td>                                                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="box flex-fill gap-5">
+                    <h3 style="margin-top: 10px;height: 10%; font-size: 20px; font-weight: 600;">优化“两部制”的计费方式</h3>
+                    <table class="centertable-sub">
+                        <thead >
+                        <tr >
+                            <th class="centerdata-th-sub" colspan="1">计费方式</th> 
+                            <th class="centerdata-th-sub" colspan="1">最大容（需）量值</th> 
+                            <th class="centerdata-th-sub" colspan="1">临界值</th> 
+                            <th class="centerdata-th-sub" colspan="1">单价</th> 
+                            <th class="centerdata-th-sub" colspan="1">基本电费测算值</th> 
+                            <th class="centerdata-th-sub" colspan="1">适用范围</th> 
+                            <th class="centerdata-th-sub" colspan="1">最优方案</th> 
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="centertable-td" style="background-color: #072951;box-shadow:-10px 0px 15px #2C58A6 inset,/*左边阴影*/10px 0px 15px #2C58A6 inset;  /*右边阴影*/">
+                                <td>容量</td>                                
+                                <td>3150</td>                                
+                                <td></td>                                
+                                <td>26</td>
+                                <td>81900</td>    
+                                <td></td>
+                                <td></td>                                                            
+                            </tr>
+                            <tr class="centertable-td" style="background-color: #072951;box-shadow:-10px 0px 15px #2C58A6 inset,/*左边阴影*/10px 0px 15px #2C58A6 inset;  /*右边阴影*/">
+                                <td>合同最大需量</td>
+                                <td>1260</td>                                
+                                <td>1260-1968.75</td>                                
+                                <td>41.6</td>                                
+                                <td>52416</td>
+                                <td>负荷平稳连续</td>    
+                                <td></td>                                                           
+                            </tr>
+                            <tr class="centertable-td" style="background-color: #072951;box-shadow:-10px 0px 15px #2C58A6 inset,/*左边阴影*/10px 0px 15px #2C58A6 inset;  /*右边阴影*/">
+                                <td>容量</td>                                
+                                <td>3150</td>                                
+                                <td></td>                                
+                                <td>26</td>
+                                <td>81900</td>    
+                                <td></td>
+                                <td></td>                                                            
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="box flex-fill gap-5">
+                    <h3 style="margin-top: 10px;height: 10%; font-size: 20px; font-weight: 600;">基本电费优化方案的量化值测算</h3>
+                    <table class="centertable-sub">
+                        <thead >
+                        <tr >
+                            <th class="centerdata-th-sub" colspan="1">优化方式</th> 
+                            <th class="centerdata-th-sub" colspan="1">注意事项</th> 
+                            <th class="centerdata-th-sub" colspan="1">节约的费用</th> 
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="centertable-td" style="background-color: #072951;box-shadow:-10px 0px 15px #2C58A6 inset,/*左边阴影*/10px 0px 15px #2C58A6 inset;  /*右边阴影*/">
+                                <td>减容</td>                                
+                                <td>兼顾安全与生产</td>                                
+                                <td>减掉容量*26</td>                                                                                   
+                            </tr>
+                            <tr class="centertable-td" style="background-color: #072951;box-shadow:-10px 0px 15px #2C58A6 inset,/*左边阴影*/10px 0px 15px #2C58A6 inset;  /*右边阴影*/">
+                                <td>减容</td>                                
+                                <td>负荷集中到一台变压器</td>                                
+                                <td>报停容量*26</td>                                                                                   
+                            </tr>
+                            <tr class="centertable-td" style="background-color: #072951;box-shadow:-10px 0px 15px #2C58A6 inset,/*左边阴影*/10px 0px 15px #2C58A6 inset;  /*右边阴影*/">
+                                <td>按需</td>                                
+                                <td>最大需量低于阈值</td>                                
+                                <td>容量*26-需量*41.6</td>                                                                                   
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+              
+              <!-- 右侧列：宽度 40% -->
+              <div class="col-5 d-flex flex-column gap-3 p-3">
+                <div class="box flex-fill">
+                    <!--全年用电负荷曲线-->
+                    <div id="chart1-1" style="height: 100%; width: 100%;"></div>
+                </div>
+                <div class="box flex-fill">
+                    <!--实际需量曲线-->
+                    <div id="chart1-2" style="height: 100%; width: 100%;"></div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 优化2子页面 -->
+<div id="popup2" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+        <span id="closePopup2" class="close-popup">&times;</span>
+        <h3 style="height: 10%; font-size: 20px; font-weight: 600;">电度电费优化</h3>
+        <div class="container-fluid vh-100 d-flex p-0">
+            <div class="row flex-fill">
+                
+              <!-- 左侧列：宽度 60% -->
+              <div class="col-7 d-flex flex-column  p-3">
+                <div class="box flex-fill gap-5">
+                    <h3 style="margin-top: 10px;height: 3%; font-size: 20px; font-weight: 600;">分时用电情况</h3>
+                    <div class="centertable-sub-opt2">
+                        <table id="zoomTable2">
+                          <thead>                           
+                            <tr>
+                                <th class="centerdata-th" colspan="1">序号</th> 
+                                <th class="centerdata-th" colspan="1">年月</th> 
+                                <th class="centerdata-th" colspan="1">户号</th> 
+                                <th class="centerdata-th" colspan="1">分时情况</th> 
+                                <th class="centerdata-th" colspan="1">尖</th> 
+                                <th class="centerdata-th" colspan="1">峰</th>
+                                <th class="centerdata-th" colspan="1">谷</th>
+                                <th class="centerdata-th" colspan="1">平</th>
+                                <th class="centerdata-th" colspan="1">峰谷因子</th>
+                            </tr>         
+                          </thead>
+                          <tbody id="table-body-opt2">
+                            <!-- Dynamically generated rows -->
+                          </tbody>
+                        </table>
+                      </div>
+                </div>
+              </div>
+              
+              <!-- 右侧列：宽度 40% -->
+              <div class="col-5 d-flex flex-column gap-3 p-3">
+                <div class="box flex-fill">
+                    <!--各时段用电占比情况-->
+                    <div id="chart2-1" style="height: 100%; width: 100%;"></div>
+                </div>
+                <div class="box flex-fill">
+                    <!--实际需量曲线-->
+                    <div id="chart2-2" style="height: 100%; width: 100%;"></div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--优化3-->
+<div id="popup3" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+        <span id="closePopup3" class="close-popup">&times;</span>
+        <h3 style="height: 10%; font-size: 20px; font-weight: 600;">力调电费的优化</h3>
+        <div class="container-fluid vh-100 d-flex p-0">
+            <div class="row flex-fill">
+                
+              <div class="col-12 d-flex flex-column  p-3">
+                <!--优化3第一部分-->
+                <div class="box flex-fill">
+                    <h4 style="margin-top: 20px;height: 10%;font-size: 20px;font-weight: 600;">观察功率因数达标情况、力调电费占比情况</h4>
+                    <div class="table-opt3" >
+                        <table id="zoomTable">
+                          <thead>
+                            <tr id="table-header">
+                                <th class="centerdata-elec-th">序号</th>
+                                <th class="centerdata-elec-th">年月</th>
+                                <th class="centerdata-elec-th">户号</th>
+                                <th class="centerdata-elec-th">基本电费</th>
+                                <th class="centerdata-elec-th">占比</th>
+                                <th class="centerdata-elec-th">电度电费</th>
+                                <th class="centerdata-elec-th">占比</th>
+                                <th class="centerdata-elec-th">力调电费</th>
+                                <th class="centerdata-elec-th">占比</th>
+                                <th class="centerdata-elec-th">实际功率因数</th>
+                                <th class="centerdata-elec-th">调整系数</th>
+                                <th class="centerdata-elec-th">月总电费</th>
+                                <th class="centerdata-elec-th">最大需量</th>
+                                <th class="centerdata-elec-th">占容量比</th>
+                                <th class="centerdata-elec-th">运行时长-雨</th>
+                                <th class="centerdata-elec-th">运行时长-污</th>
+                                <th class="centerdata-elec-th">总电量</th>
+                                <th class="centerdata-elec-th">电量\容量</th>
+                            </tr> <!-- Dynamically generated columns -->
+                          </thead>
+                          <tbody id="tb-opt3">
+                            <!-- Dynamically generated rows -->
+                          </tbody>
+                        </table>
+                      </div>
+                </div>
+
+                <!--优化3第二部分-->
+                <div class="box flex-fill">
+                    <h4 style="margin-top: 50px;height: 10%;font-size: 20px;font-weight: 600;">提升功率因数的经济性测算</h4>
+                    <table class="centertable-sub">
+                        <thead >
+                        <tr >
+                            <th class="centerdata-th-sub" colspan="1">年份</th> 
+                            <th class="centerdata-th-sub" colspan="1">平均功率因数</th> 
+                            <th class="centerdata-th-sub" colspan="1">当年力调电费</th> 
+                            <th class="centerdata-th-sub" colspan="1">全年力调电费</th>
+                            <th class="centerdata-th-sub" colspan="1">改造费（基础数）</th>
+                            <th class="centerdata-th-sub" colspan="1">静态回收期</th>
+                            <th class="centerdata-th-sub" colspan="1">改造费（高级数）</th>
+                            <th class="centerdata-th-sub" colspan="1">静态回收期</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="centertable-td" style="background-color: #072951;box-shadow:-10px 0px 15px #2C58A6 inset,/*左边阴影*/10px 0px 15px #2C58A6 inset;  /*右边阴影*/">
+                                <td>2023</td>                                
+                                <td>0.34</td>                                 
+                                <td>71141.69</td>                                
+                                <td>71141.69</td>
+                                <td>141750</td>
+                                <td>2.0</td>
+                                <td>708750</td>
+                                <td>10.0</td>                                                              
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+              
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/dataTool.js"></script>
+<script src="js/index.js"></script>
+<script src="js/china.js"></script>
+<script src="js/zhejiang.js"></script>
+<script src="js/char1.js"></script>
+<script src="js/chart2.js"></script>
+<script src="js/chart3.js"></script>
+<script src="js/table.js"></script>
+<script src="js/opt.js"></script>
+<script src="js/showdetial.js"></script>
+<script src="js/chart-opt.js"></script>
+<script src="js/opt2-table.js"></script>
+</html>
