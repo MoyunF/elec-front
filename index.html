@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/opt.css">
     <link rel="stylesheet" href="css/sub.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
 
     <style>
@@ -504,50 +504,48 @@
 
 <!--优化3-->
 <div id="popup3" class="popup-overlay" style="display: none;">
-    <div class="popup-content">
+    <div class="popup-content-opt3" style="width: 90%; height: 95%;">
         <span id="closePopup3" class="close-popup">&times;</span>
-        <h3 style="height: 10%; font-size: 20px; font-weight: 600;">力调电费的优化</h3>
-        <div class="container-fluid vh-100 d-flex p-0">
-            <div class="row flex-fill">
-                
-              <div class="col-12 d-flex flex-column  p-3">
-                <!--优化3第一部分-->
-                <div class="box flex-fill">
+        <h3 style="height: 3%; font-size: 20px; font-weight: 600;">力调电费的优化</h3>
+        <div class="container-fluid d-flex p-0">
+            <div class="col-12 d-flex flex-column  p-0">
+            <!--优化3第一部分-->
+                <div class="box flex-fill" style="height: 730px; align-items: center;">
                     <h4 style="margin-top: 20px;height: 10%;font-size: 20px;font-weight: 600;">观察功率因数达标情况、力调电费占比情况</h4>
                     <div class="table-opt3" >
                         <table id="zoomTable">
-                          <thead>
+                            <thead>
                             <tr id="table-header">
-                                <th class="centerdata-elec-th">序号</th>
-                                <th class="centerdata-elec-th">年月</th>
-                                <th class="centerdata-elec-th">户号</th>
-                                <th class="centerdata-elec-th">基本电费</th>
-                                <th class="centerdata-elec-th">占比</th>
-                                <th class="centerdata-elec-th">电度电费</th>
-                                <th class="centerdata-elec-th">占比</th>
-                                <th class="centerdata-elec-th">力调电费</th>
-                                <th class="centerdata-elec-th">占比</th>
-                                <th class="centerdata-elec-th">实际功率因数</th>
-                                <th class="centerdata-elec-th">调整系数</th>
-                                <th class="centerdata-elec-th">月总电费</th>
-                                <th class="centerdata-elec-th">最大需量</th>
-                                <th class="centerdata-elec-th">占容量比</th>
-                                <th class="centerdata-elec-th">运行时长-雨</th>
-                                <th class="centerdata-elec-th">运行时长-污</th>
-                                <th class="centerdata-elec-th">总电量</th>
-                                <th class="centerdata-elec-th">电量\容量</th>
+                                <th class="centerdata-elec-th-opt3">序号</th>
+                                <th class="centerdata-elec-th-opt3">年月</th>
+                                <th class="centerdata-elec-th-opt3">户号</th>
+                                <th class="centerdata-elec-th-opt3">基本电费</th>
+                                <th class="centerdata-elec-th-opt3">占比</th>
+                                <th class="centerdata-elec-th-opt3">电度电费</th>
+                                <th class="centerdata-elec-th-opt3">占比</th>
+                                <th class="centerdata-elec-th-opt3">力调电费</th>
+                                <th class="centerdata-elec-th-opt3">占比</th>
+                                <th class="centerdata-elec-th-opt3">实际功率因数</th>
+                                <th class="centerdata-elec-th-opt3">调整系数</th>
+                                <th class="centerdata-elec-th-opt3">月总电费</th>
+                                <th class="centerdata-elec-th-opt3">最大需量</th>
+                                <th class="centerdata-elec-th-opt3">占容量比</th>
+                                <th class="centerdata-elec-th-opt3">运行时长-雨</th>
+                                <th class="centerdata-elec-th-opt3">运行时长-污</th>
+                                <th class="centerdata-elec-th-opt3">总电量</th>
+                                <th class="centerdata-elec-th-opt3">电量\容量</th>
                             </tr> <!-- Dynamically generated columns -->
-                          </thead>
-                          <tbody id="tb-opt3">
+                            </thead>
+                            <tbody id="tb-opt3">
                             <!-- Dynamically generated rows -->
-                          </tbody>
+                            </tbody>
                         </table>
-                      </div>
+                        </div>
                 </div>
 
                 <!--优化3第二部分-->
                 <div class="box flex-fill">
-                    <h4 style="margin-top: 50px;height: 10%;font-size: 20px;font-weight: 600;">提升功率因数的经济性测算</h4>
+                    <h4 style="margin-top: 20px;height: 20%;font-size: 20px;font-weight: 600;">提升功率因数的经济性测算</h4>
                     <table class="centertable-sub">
                         <thead >
                         <tr >
@@ -575,9 +573,6 @@
                         </tbody>
                     </table>
                 </div>
-              </div>
-              
-              
             </div>
         </div>
     </div>

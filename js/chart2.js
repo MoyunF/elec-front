@@ -62,7 +62,7 @@ var option = {
                 width: 3,
                 type: 'solid'
             },
-            smooth: true // 使线条平滑
+            smooth: false // 使线条平滑
         },
         {
             name: '考核标准',
@@ -77,7 +77,7 @@ var option = {
                 width: 3,
                 type: 'dotted' // 虚线
             },
-            smooth: true
+            smooth: false
         }
     ]
 };

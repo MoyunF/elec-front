@@ -102,7 +102,7 @@ function renderChart2_1() {
             }
         },
         legend: {
-            data: ['尖峰', '平', '谷', '其他'],
+            data: ['尖', '峰', '平', '谷'],
             textStyle: {
                 color: '#61d2f7'
             },

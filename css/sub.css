@@ -23,6 +23,19 @@
     color: white;
 }
 
+
+
+.popup-content-opt3 {
+  background-color: #04425f;
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%;
+  height: 95%;
+  text-align: center;
+  position: relative;
+  color: white;
+}
+
 .box {
     /* 浅灰色背景 */
     border: 1px solid #dee2e6; /* 边框 */
@@ -31,7 +44,7 @@
     border-radius: 5px; /* 圆角 */
     display: flex; /* 使用 Flexbox 布局 */
     flex-direction: column; /* 垂直方向布局 */
-    height: 100%; /* 确保填满父容器的高度 */
+
   }
 
 
@@ -70,12 +83,9 @@
  .table-opt3 {
   position: relative;
   overflow: hidden;
-  overflow-x: scroll;
-  overflow-y: scroll;
   width: 100%;
-  margin-left: 0%;
   height: 100%;
-  
+  border-collapse: collapse; 
   display: flex;
   justify-content: center;
   align-items: center;
